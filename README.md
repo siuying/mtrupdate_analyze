@@ -9,3 +9,9 @@ WIP.
 ## Usage
 
 WIP.
+
+## Folder Structure
+
+### /data/raw/
+
+Raw json fetched from [@mtrupdate](https://twitter.com/mtrupdate).
