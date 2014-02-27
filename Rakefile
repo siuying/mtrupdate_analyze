@@ -4,6 +4,7 @@ Bundler.require
 
 require_relative './config/settings'
 require_relative './lib/mtrupdate'
+require_relative './lib/tasks/migration'
 
 namespace :db do
   desc "Create database"
@@ -13,9 +14,12 @@ namespace :db do
       primary_key :id
       String :text
       Date :created_at
+      TrueClass :reply_to
+      String :lang
     end
   end
 
+  desc "Import latest data"
   task :import do
     database = Sequel.connect Settings.database.uri
     twitter = Twitter::REST::Client.new do |config|

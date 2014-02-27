@@ -34,7 +34,15 @@ module Mtrupdate
       tweets_table = database[:tweets]
       database.transaction do
         tweets.each do |tweet|
-          tweets_table.insert(:id => tweet.id, :text => tweet.text, :created_at => tweet.created_at)
+          # correct langauge
+          # twitter language  recognition some time think mtrupdate speak 
+          # ja instead of zh so we have to correct it manually
+          lang = (tweet.lang == "en") ? "en" : "zh"
+          tweets_table.insert(:id => tweet.id, 
+            :text => tweet.text, 
+            :created_at => tweet.created_at,
+            :lang => lang,
+            :reply_to => tweet.in_reply_to_screen_name?)
         end
       end
     end
