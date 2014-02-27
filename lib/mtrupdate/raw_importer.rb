@@ -1,5 +1,4 @@
 require 'twitter'
-require 'pry'
 
 module Mtrupdate
   # Import raw mtrupdate data from twitter
