@@ -6,6 +6,9 @@ gem "twitter"
 # Config file loading
 gem "settingslogic"
 
+gem "sequel"
+gem "sqlite3"
+
 # Language Detection
 # gem "cld"
 
@@ -13,3 +16,7 @@ gem "settingslogic"
 gem "pry"
 
 gem "rake"
+
+group :test do
+  gem "rspec"
+end

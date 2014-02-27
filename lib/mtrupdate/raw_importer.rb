@@ -14,8 +14,9 @@ module Mtrupdate
 
     # Find the maximum tweet id in the path
     def last_tweet_id
-      filename = Dir["#{path}/*.json"].sort.last
-      filename.match(%r{^data/raw/([0-9])+\.json$})[1] rescue nil
+      filenames = Dir["#{path}/*.json"]
+      last_id = filenames.collect {|filename| filename.match(%r{^data/raw/([0-9]+)\.json$})[1].to_i }.sort.last rescue nil
+      return last_id ? last_id.to_s : nil
     end
 
     # Find all tweets from user timeline
