@@ -14,6 +14,8 @@ GEM
       ice_nine (~> 0.9)
     buftok (0.2.0)
     builder (3.2.2)
+    cld (0.7.0)
+      ffi
     coderay (1.1.0)
     coercible (1.0.0)
       descendants_tracker (~> 0.0.1)
@@ -21,6 +23,7 @@ GEM
     equalizer (0.0.9)
     faraday (0.9.0)
       multipart-post (>= 1.2, < 3)
+    ffi (1.9.3)
     grape (0.6.1)
       activesupport
       builder
@@ -85,6 +88,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  cld
   grape
   pry
   rake

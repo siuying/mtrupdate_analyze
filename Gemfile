@@ -6,13 +6,10 @@ gem "twitter"
 # Config file loading
 gem "settingslogic"
 
-# Database
-gem "sequel"
-gem "sqlite3"
+# Language Detection
+# gem "cld"
 
-# API
-gem 'grape'
-
+# Debugging
 gem "pry"
 
 gem "rake"
