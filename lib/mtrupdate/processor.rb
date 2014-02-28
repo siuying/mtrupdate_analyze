@@ -34,6 +34,12 @@ module Mtrupdate
       File.open(fullpath, 'w') { |file| file.write(json) }
     end
 
+    # group the records by event date
+    # return Hash of records, with key be the date and values be arrays of records
+    def group
+      records.group_by{|r| r[:date]}
+    end
+
     protected
 
     # filter any unrelated records
@@ -78,12 +84,6 @@ module Mtrupdate
     # another round of filter after cleanup and tagging
     def post_filter
       @records = records.select {|event| event[:delay] }
-    end
-
-    # group the records by event date
-    # return Hash of records, with key be the date and values be arrays of records
-    def group
-      records.group_by{|r| r[:date]}
     end
   end
 end
