@@ -18,7 +18,7 @@ module Mtrupdate
 
     # for each date until today, find the worse delay event
     def process(today=DateTime.now.to_date)
-      @output = {}
+      @output = []
 
       first_date = groups.keys.min
       current_date = first_date
@@ -26,9 +26,9 @@ module Mtrupdate
         if groups[current_date]
           worst_severity = worst_delay_severity(groups[current_date])
           events = event_with_records(groups[current_date])
-          @output[current_date] = { :severity => worst_severity, :events => events }
+          @output << { :date => current_date, :severity => worst_severity, :events => events }
         else
-          @output[current_date] = { :severity => 0, :events => [] }
+          @output << { :date => current_date, :severity => 0, :events => [] }
         end
         current_date = current_date + 1
       end
