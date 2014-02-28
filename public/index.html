@@ -21,9 +21,9 @@ body {
 .RdYlGn .q0-11{fill:rgb(140,255,136)}
 .RdYlGn .q1-11{fill:rgb(240,255,82)}
 .RdYlGn .q2-11{fill:rgb(255,215,0)}
-.RdYlGn .q3-11{fill:rgb(255,166,0)}
-.RdYlGn .q4-11{fill:rgb(253,109,10)}
-.RdYlGn .q5-11{fill:rgb(255,33,1)}
+.RdYlGn .q3-11{fill:rgb(253,109,10)}
+.RdYlGn .q4-11{fill:rgb(255,33,1)}
+.RdYlGn .q5-11{fill:rgb(131,33,1)}
 .RdYlGn .q6-11{fill:rgb(0,0,0)}
 
 </style>
@@ -41,6 +41,15 @@ var day = d3.time.format("%w"),
     format = d3.time.format("%Y-%m-%d");
 
 var color = function(d) { return "q" + d + "-11"; };
+var severity = {
+  1: "服務受阻",
+  2: "稍有阻延",
+  3: "顯著受阻",
+  4: "嚴重受阻",
+  5: "限度服務",
+  6: "全綫暫停",
+  0: "正常"
+}
 
 var svg = d3.select("body").selectAll("svg")
     .data(d3.range(2012, 2015))
@@ -78,13 +87,13 @@ svg.selectAll(".month")
 d3.json("heatmap.json", function(error, json) {
   var data = d3.nest()
     .key(function(d) { return d.date; })
-    .rollup(function(d) { return d[0].severity; })
+    .rollup(function(d) { return d[0]; })
     .map(json);
 
   rect.filter(function(d) { return d in data; })
-      .attr("class", function(d) { return "day " + color(data[d]); })
+      .attr("class", function(d) { return "day " + color(data[d].severity); })
     .select("title")
-      .text(function(d) { return d + ": " + percent(data[d]); });
+      .text(function(d) { return d + ": " + severity[data[d].severity]; });
 });
 
 function monthPath(t0) {
