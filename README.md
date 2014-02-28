@@ -16,6 +16,17 @@ WIP.
 
 Raw json fetched from [@mtrupdate](https://twitter.com/mtrupdate).
 
+##### /data/raw/243329358247366656.json
+```json
+{
+  "id": 243329358247366656,
+  "text": "2042 港島綫上環站訊號故障，服務嚴重受阻，可考慮其他交通工具",
+  "created_at": "2012-09-05 20:46:54 +0800",
+  "lang": "ja",
+  "reply_to": null
+}
+```
+
 ### /data/by_date/
 
 Raw json filtered for only tweets related to delay events, grouped by date.
