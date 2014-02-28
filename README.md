@@ -14,7 +14,7 @@ Load all @mtrupdate tweets and extract data from it.
 
 WIP.
 
-## Folder Structure
+## API
 
 ### /data/raw/
 
