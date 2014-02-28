@@ -1,6 +1,7 @@
 require 'rubygems'
 require 'bundler'
 Bundler.require
+require 'fileutils'
 
 require_relative './config/settings'
 require_relative './lib/mtrupdate'
@@ -23,5 +24,19 @@ namespace :data do
       puts "Fetch all tweets from mtrupdate"
     end
     importer.save_all_tweets(max_id)
+  end
+
+  desc "Process raw data, group them by date and export to data/by_date"
+  task :process do
+    FileUtils.mkdir_p("data/by_date")
+    FileUtils.rm(Dir["data/by_date/*.json"])
+
+    importer = Jsonsql::Importer.new
+    importer.import(Dir["data/raw/*.json"])
+    records = importer.table.all
+
+    processor = Mtrupdate::Processor.new("data/by_date", records)
+    processor.process
+    processor.export
   end
 end

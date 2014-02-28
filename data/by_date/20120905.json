@@ -1,27 +1,3 @@
-# MTR Update Analyzer
-
-Load all @mtrupdate tweets and extract data from it.
-
-## Status
-
-WIP.
-
-## Usage
-
-WIP.
-
-## Folder Structure
-
-### /data/raw/
-
-Raw json fetched from [@mtrupdate](https://twitter.com/mtrupdate).
-
-### /data/by_date/
-
-Raw json filtered for only tweets related to delay events, grouped by date.
-
-##### /data/by_date/20130905.json
-```json
 [
   {
     "id": 243329358247366656,
@@ -51,4 +27,3 @@ Raw json filtered for only tweets related to delay events, grouped by date.
     "line": "港島綫"
   }
 ]
-```

@@ -8,6 +8,7 @@ gem "settingslogic"
 
 gem "sequel"
 gem "sqlite3"
+gem "jsonsql"
 
 # Language Detection
 # gem "cld"
