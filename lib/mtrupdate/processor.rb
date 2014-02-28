@@ -53,7 +53,9 @@ module Mtrupdate
         record[:created_at] = DateTime.parse(record[:created_at]) if record[:created_at].is_a?(String) 
 
         # find the create time
-        record[:time] = record[:text].match(/^([0-9]{4})/)[1].to_i
+        match = record[:text].match(/^([0-9]{4})[ \t]*(.+)$/)
+        record[:time] = match[1].to_i
+        record[:text] = match[2]
 
         # find the event date, because the service hour start at 06:00,
         # any events before 06:00 is assumed to grouped to previous date
