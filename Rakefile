@@ -40,3 +40,5 @@ namespace :data do
     processor.export
   end
 end
+
+task :default => [:'data:import', :'data:process']
