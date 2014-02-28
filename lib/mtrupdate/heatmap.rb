@@ -1,4 +1,4 @@
-require 'pry'
+require 'date'
 
 module Mtrupdate
   class Heatmap
@@ -17,7 +17,7 @@ module Mtrupdate
     end
 
     # for each date until today, find the worse delay event
-    def process(today=Date.now)
+    def process(today=DateTime.now.to_date)
       @output = {}
 
       first_date = groups.keys.min
@@ -38,7 +38,9 @@ module Mtrupdate
 
     # export data, as a JSON file
     def export
-
+      fullpath = File.join(export_path, "heatmap.json")
+      json     = JSON.pretty_generate(output)
+      File.open(fullpath, 'w') { |file| file.write(json) }
     end
 
     # Find the worst delay from the records of a day
@@ -51,9 +53,6 @@ module Mtrupdate
     # Find events from records
     def event_with_records(records)
       records.collect {|r| {:time => "%04d" % [r[:time]], :text => r[:text]} }
-    rescue StandardError => e
-      puts "#{e}"
-      binding.pry
     end
   end
 end

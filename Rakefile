@@ -29,6 +29,7 @@ namespace :data do
   desc "Process raw data, group them by date and export to data/by_date"
   task :process do
     FileUtils.mkdir_p("data/by_date")
+    FileUtils.mkdir_p("data/heatmap")
     FileUtils.rm(Dir["data/by_date/*.json"])
 
     importer = Jsonsql::Importer.new
@@ -38,6 +39,10 @@ namespace :data do
     processor = Mtrupdate::Processor.new("data/by_date", records)
     processor.process
     processor.export
+
+    heatmap = Mtrupdate::Heatmap.new("data/heatmap", processor.group)
+    heatmap.process
+    heatmap.export
   end
 end
 
