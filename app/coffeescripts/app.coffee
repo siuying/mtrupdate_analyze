@@ -1,8 +1,9 @@
 class HeatmapController
   constructor: () ->
-    @width = 700
-    @height = 90
+    @cellPad = 2
     @cellSize = 12
+    @width = (@cellSize + @cellPad) * 53 + 40
+    @height = (@cellSize + @cellPad) * 7 + 10
     @severity =
       0: "正常"
       1: "服務受阻"
@@ -18,27 +19,27 @@ class HeatmapController
     @format = d3.time.format("%Y-%m-%d")
 
   generate: () =>
-    @calendar = d3.select("body").selectAll("svg")
+    @svg = d3.select("body").selectAll("svg")
       .data(d3.range(2012, 2015))
       .enter().append("svg").attr("width", @width).attr("height", @height).attr("class", "mtr")
-      .append("g").attr("transform", "translate(" + ((@width - @cellSize * 53) / 2) + "," + (@height - @cellSize * 7 - 1) + ")")
+      .append("g").attr("transform", "translate(" + ((@width - (@cellSize + @cellPad) * 53) / 2) + "," + (@height -  (@cellSize + @cellPad) * 7 - 1) + ")")
 
-    @calendar.append("text")
+    @svg.append("text")
       .attr("transform", "translate(-6," + @cellSize * 3.5 + ")rotate(-90)")
       .style("text-anchor", "middle")
       .text((d) -> d)
 
-    @cells = @calendar.selectAll(".day")
+    @cells = @svg.selectAll(".day")
       .data((d) -> d3.time.days(new Date(d, 0, 1), new Date(d + 1, 0, 1)))
       .enter().append("rect")
       .attr("class", "day")
       .attr("width", @cellSize)
       .attr("height", @cellSize)
-      .attr("x", (d) => @week(d) * @cellSize )
-      .attr("y", (d) => @day(d) * @cellSize )
+      .attr("x", (d) => @week(d) * (@cellSize + @cellPad) + @cellPad/2 )
+      .attr("y", (d) => @day(d) * (@cellSize + @cellPad) + @cellPad/2 )
       .datum(@format)
     @cells.append("title").text((d) -> d)
-    @calendar.selectAll(".month").data((d) -> d3.time.months(new Date(d, 0, 1), new Date(d + 1, 0, 1)) )
+    @svg.selectAll(".month").data((d) -> d3.time.months(new Date(d, 0, 1), new Date(d + 1, 0, 1)) )
       .enter().append("path").attr("class", "month").attr("d", @monthPath)
 
   load: (filename="heatmap.json") =>
@@ -59,17 +60,19 @@ class HeatmapController
   getData: =>
     return @data
 
+  getSvg: =>
+    return @svg
+
   setData: (data) =>
     @data = data
 
   monthPath: (t0) =>
-    cellSize = @cellSize
+    cellSize = @cellSize + @cellPad
     t1 = new Date(t0.getFullYear(), t0.getMonth() + 1, 0)
     d0 =+ @day(t0)
     w0 =+ @week(t0)
     d1 =+ @day(t1)
     w1 =+ @week(t1)
-
     path = "M" + (w0 + 1) * cellSize + "," + d0 * cellSize
     path += "H" + w0 * cellSize + "V" + 7 * cellSize
     path += "H" + w1 * cellSize + "V" + (d1 + 1) * cellSize
@@ -77,6 +80,15 @@ class HeatmapController
     path += "H" + (w0 + 1) * cellSize + "Z"
     return path
 
-heatmap = new HeatmapController
-heatmap.generate()
-heatmap.load()
+$ ->
+  heatmap = new HeatmapController
+  heatmap.generate()
+  heatmap.load()
+
+  $('.mtr .day').on 'click', (e) ->
+    # deselect others
+    $('.selected').removeClass('selected')
+
+    # select current target
+    target = $(e.currentTarget)
+    target.addClass('selected')

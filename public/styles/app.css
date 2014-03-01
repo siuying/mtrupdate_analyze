@@ -3,15 +3,17 @@ body {
   shape-rendering: crispEdges; }
 
 .mtr .day {
-  fill: #fff;
-  stroke: #fff;
-  stroke-width: 1px; }
+  fill: #fff; }
+  .mtr .day.selected {
+    stroke: #999;
+    stroke-width: 2px; }
   .mtr .day:hover {
+    stroke: #000;
     stroke-width: 2px; }
 .mtr .month {
   fill: none;
-  stroke: #999;
-  stroke-width: 2px; }
+  stroke: #ccc;
+  stroke-width: 1px; }
 .mtr .q0-11 {
   fill: #eeeeee; }
 .mtr .q1-11 {
