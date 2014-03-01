@@ -48,10 +48,19 @@ class HeatmapController
         .rollup((d) -> d[0])
         .map(json)
 
+      @setData(data)
+
       @cells.filter((d) -> d of data)
         .attr("class", (d) -> "day q#{data[d].severity}-11" )
+        .attr("data-date", (d) -> data[d].date )
         .select("title")
         .text((d) => "#{d}: #{@severity[data[d].severity]}")
+
+  getData: =>
+    return @data
+
+  setData: (data) =>
+    @data = data
 
   monthPath: (t0) =>
     cellSize = @cellSize
@@ -66,7 +75,6 @@ class HeatmapController
     path += "H" + w1 * cellSize + "V" + (d1 + 1) * cellSize
     path += "H" + (w1 + 1) * cellSize + "V" + 0
     path += "H" + (w0 + 1) * cellSize + "Z"
-
     return path
 
 heatmap = new HeatmapController

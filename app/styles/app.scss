@@ -8,6 +8,10 @@ body {
     fill: #fff;
     stroke: #fff;
     stroke-width: 1px;
+
+    &:hover {
+      stroke-width: 2px;
+    }
   }
 
   .month {
@@ -15,6 +19,7 @@ body {
     stroke: #999;
     stroke-width: 2px;
   }
+
   .q0-11{fill:rgb(238, 238, 238)}
   .q1-11{fill:rgb(240,255,82)}
   .q2-11{fill:rgb(255,215,0)}

@@ -5,6 +5,8 @@
   HeatmapController = (function() {
     function HeatmapController() {
       this.monthPath = __bind(this.monthPath, this);
+      this.setData = __bind(this.setData, this);
+      this.getData = __bind(this.getData, this);
       this.load = __bind(this.load, this);
       this.generate = __bind(this.generate, this);
       this.width = 700;
@@ -61,15 +63,26 @@
           }).rollup(function(d) {
             return d[0];
           }).map(json);
+          _this.setData(data);
           return _this.cells.filter(function(d) {
             return d in data;
           }).attr("class", function(d) {
             return "day q" + data[d].severity + "-11";
+          }).attr("data-date", function(d) {
+            return data[d].date;
           }).select("title").text(function(d) {
             return "" + d + ": " + _this.severity[data[d].severity];
           });
         };
       })(this));
+    };
+
+    HeatmapController.prototype.getData = function() {
+      return this.data;
+    };
+
+    HeatmapController.prototype.setData = function(data) {
+      return this.data = data;
     };
 
     HeatmapController.prototype.monthPath = function(t0) {

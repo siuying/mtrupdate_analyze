@@ -6,6 +6,8 @@ body {
   fill: #fff;
   stroke: #fff;
   stroke-width: 1px; }
+  .mtr .day:hover {
+    stroke-width: 2px; }
 .mtr .month {
   fill: none;
   stroke: #999;
