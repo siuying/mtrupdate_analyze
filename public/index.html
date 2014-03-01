@@ -9,31 +9,32 @@ body {
 
 .day {
   fill: #fff;
-  stroke: #ccc;
+  stroke: #fff;
+  stroke-width: 1px;
 }
 
 .month {
   fill: none;
-  stroke: #000;
+  stroke: #999;
   stroke-width: 2px;
 }
 
-.RdYlGn .q0-11{fill:rgb(140,255,136)}
-.RdYlGn .q1-11{fill:rgb(240,255,82)}
-.RdYlGn .q2-11{fill:rgb(255,215,0)}
-.RdYlGn .q3-11{fill:rgb(253,109,10)}
-.RdYlGn .q4-11{fill:rgb(255,33,1)}
-.RdYlGn .q5-11{fill:rgb(131,33,1)}
-.RdYlGn .q6-11{fill:rgb(0,0,0)}
+.mtr .q0-11{fill:rgb(238, 238, 238)}
+.mtr .q1-11{fill:rgb(240,255,82)}
+.mtr .q2-11{fill:rgb(255,215,0)}
+.mtr .q3-11{fill:rgb(253,109,10)}
+.mtr .q4-11{fill:rgb(255,33,1)}
+.mtr .q5-11{fill:rgb(131,33,1)}
+.mtr .q6-11{fill:rgb(0,0,0)}
 
 </style>
 <body>
 <script src="js/d3.v3.min.js"></script>
 <script>
 
-var width = 960,
-    height = 136,
-    cellSize = 17; // cell size
+var width = 700,
+    height = 90,
+    cellSize = 12; // cell size
 
 var day = d3.time.format("%w"),
     week = d3.time.format("%U"),
@@ -56,7 +57,7 @@ var svg = d3.select("body").selectAll("svg")
   .enter().append("svg")
     .attr("width", width)
     .attr("height", height)
-    .attr("class", "RdYlGn")
+    .attr("class", "mtr")
   .append("g")
     .attr("transform", "translate(" + ((width - cellSize * 53) / 2) + "," + (height - cellSize * 7 - 1) + ")");
 
@@ -106,7 +107,5 @@ function monthPath(t0) {
       + "H" + (w1 + 1) * cellSize + "V" + 0
       + "H" + (w0 + 1) * cellSize + "Z";
 }
-
-d3.select(self.frameElement).style("height", "2910px");
 
 </script>
