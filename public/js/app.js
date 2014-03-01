@@ -30,7 +30,7 @@
     }
 
     HeatmapController.prototype.generate = function() {
-      this.svg = d3.select("body").selectAll("svg").data(d3.range(2012, 2015)).enter().append("svg").attr("width", this.width).attr("height", this.height).attr("class", "mtr").append("g").attr("transform", "translate(" + ((this.width - (this.cellSize + this.cellPad) * 53) / 2) + "," + (this.height - (this.cellSize + this.cellPad) * 7 - 1) + ")");
+      this.svg = d3.select("#heatmap").selectAll("svg").data(d3.range(2012, 2015)).enter().append("svg").attr("width", this.width).attr("height", this.height).attr("class", "mtr").append("g").attr("transform", "translate(" + ((this.width - (this.cellSize + this.cellPad) * 53) / 2) + "," + (this.height - (this.cellSize + this.cellPad) * 7 - 1) + ")");
       this.svg.append("text").attr("transform", "translate(-6," + this.cellSize * 3.5 + ")rotate(-90)").style("text-anchor", "middle").text(function(d) {
         return d;
       });

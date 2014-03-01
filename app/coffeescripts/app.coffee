@@ -19,7 +19,7 @@ class HeatmapController
     @format = d3.time.format("%Y-%m-%d")
 
   generate: () =>
-    @svg = d3.select("body").selectAll("svg")
+    @svg = d3.select("#heatmap").selectAll("svg")
       .data(d3.range(2012, 2015))
       .enter().append("svg").attr("width", @width).attr("height", @height).attr("class", "mtr")
       .append("g").attr("transform", "translate(" + ((@width - (@cellSize + @cellPad) * 53) / 2) + "," + (@height -  (@cellSize + @cellPad) * 7 - 1) + ")")
