@@ -8,7 +8,7 @@ gem "settingslogic"
 
 gem "sequel"
 gem "sqlite3"
-gem "jsonsql"
+gem "jsonsql", '0.1.2'
 
 # Language Detection
 # gem "cld"
@@ -19,9 +19,11 @@ gem "pry"
 gem "rake"
 
 # Coffeescript & SCSS
-gem "guard", :require => false
-gem "guard-coffeescript", :require => false
-gem 'guard-sass', :require => false
+group :development do
+  gem "guard", :require => false
+  gem "guard-coffeescript", :require => false
+  gem 'guard-sass', :require => false
+end
 
 group :test do
   gem "rspec"

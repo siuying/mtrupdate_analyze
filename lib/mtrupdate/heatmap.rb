@@ -26,9 +26,17 @@ module Mtrupdate
         if groups[current_date]
           worst_severity = worst_delay_severity(groups[current_date])
           events = event_with_records(groups[current_date])
-          @output << { :date => current_date, :severity => worst_severity, :events => events }
+          @output << { 
+            :date => current_date, 
+            :severity => worst_severity, 
+            :events => events 
+          }
         else
-          @output << { :date => current_date, :severity => 0, :events => [] }
+          @output << { 
+            :date => current_date, 
+            :severity => 0, 
+            :events => [] 
+          }
         end
         current_date = current_date + 1
       end
@@ -52,7 +60,7 @@ module Mtrupdate
 
     # Find events from records
     def event_with_records(records)
-      records.collect {|r| {:time => "%04d" % [r[:time]], :text => r[:text]} }
+      records.collect {|r| { :time => "%04d" % [r[:time]], :text => r[:text], :severity => DELAY_SEVERITY[r[:delay]] } }
     end
   end
 end
