@@ -1,4 +1,3 @@
-# A sample Guardfile
-# More info at https://github.com/guard/guard#readme
-
 guard 'coffeescript', :input => 'app/coffeescripts', :output => 'public/js'
+
+guard 'sass', :input => 'app/styles', :output => 'public/styles'

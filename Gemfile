@@ -18,9 +18,10 @@ gem "pry"
 
 gem "rake"
 
-# Coffeescript
-gem "guard"
-gem "guard-coffeescript"
+# Coffeescript & SCSS
+gem "guard", :require => false
+gem "guard-coffeescript", :require => false
+gem 'guard-sass', :require => false
 
 group :test do
   gem "rspec"

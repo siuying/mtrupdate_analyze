@@ -1,0 +1,26 @@
+body {
+  font: 10px sans-serif;
+  shape-rendering: crispEdges; }
+
+.mtr .day {
+  fill: #fff;
+  stroke: #fff;
+  stroke-width: 1px; }
+.mtr .month {
+  fill: none;
+  stroke: #999;
+  stroke-width: 2px; }
+.mtr .q0-11 {
+  fill: #eeeeee; }
+.mtr .q1-11 {
+  fill: #f0ff52; }
+.mtr .q2-11 {
+  fill: gold; }
+.mtr .q3-11 {
+  fill: #fd6d0a; }
+.mtr .q4-11 {
+  fill: #ff2101; }
+.mtr .q5-11 {
+  fill: #832101; }
+.mtr .q6-11 {
+  fill: black; }

@@ -1,0 +1,25 @@
+body {
+  font: 10px sans-serif;
+  shape-rendering: crispEdges;
+}
+
+.mtr {
+  .day {
+    fill: #fff;
+    stroke: #fff;
+    stroke-width: 1px;
+  }
+
+  .month {
+    fill: none;
+    stroke: #999;
+    stroke-width: 2px;
+  }
+  .q0-11{fill:rgb(238, 238, 238)}
+  .q1-11{fill:rgb(240,255,82)}
+  .q2-11{fill:rgb(255,215,0)}
+  .q3-11{fill:rgb(253,109,10)}
+  .q4-11{fill:rgb(255,33,1)}
+  .q5-11{fill:rgb(131,33,1)}
+  .q6-11{fill:rgb(0,0,0)}
+}
