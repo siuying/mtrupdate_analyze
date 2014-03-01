@@ -1,5 +1,5 @@
 (function() {
-  var HeatmapController,
+  var HeatmapController, RecentController,
     __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
 
   HeatmapController = (function() {
@@ -65,8 +65,7 @@
           }).rollup(function(d) {
             return d[0];
           }).map(json);
-          _this.setData(data);
-          return _this.cells.filter(function(d) {
+          _this.cells.filter(function(d) {
             return d in data;
           }).attr("class", function(d) {
             return "day q" + data[d].severity + "-11";
@@ -75,6 +74,7 @@
           }).select("title").text(function(d) {
             return "" + d + ": " + _this.severity[data[d].severity];
           });
+          return _this.setData(json);
         };
       })(this));
     };
@@ -88,7 +88,10 @@
     };
 
     HeatmapController.prototype.setData = function(data) {
-      return this.data = data;
+      this.data = data;
+      if (this.onLoad) {
+        return this.onLoad(data);
+      }
     };
 
     HeatmapController.prototype.monthPath = function(t0) {
@@ -111,11 +114,52 @@
 
   })();
 
+  RecentController = (function() {
+    function RecentController(records) {
+      this.records = records;
+    }
+
+    RecentController.prototype.loadDays = function(days) {
+      var since, today;
+      today = new Date();
+      since = new Date();
+      since.setDate(since.getDate() - days);
+      return this.loadDayRange(since, today);
+    };
+
+    RecentController.prototype.loadDayRange = function(from, to) {
+      var date, record, result, _i, _len, _ref;
+      result = [];
+      console.log(from, to);
+      _ref = this.records;
+      for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+        record = _ref[_i];
+        date = new Date(record.date);
+        if (date >= from && date <= from) {
+          result.push({
+            'date': date,
+            'events': record.events
+          });
+        }
+      }
+      return result;
+    };
+
+    return RecentController;
+
+  })();
+
   $(function() {
     var heatmap;
     heatmap = new HeatmapController;
     heatmap.generate();
     heatmap.load();
+    heatmap.onLoad = function(data) {
+      var recent;
+      console.log("data loaded");
+      recent = new RecentController(data);
+      return recent.loadDays(0);
+    };
     return $('.mtr .day').on('click', function(e) {
       var target;
       $('.selected').removeClass('selected');

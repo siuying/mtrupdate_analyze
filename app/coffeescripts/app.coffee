@@ -49,13 +49,13 @@ class HeatmapController
         .rollup((d) -> d[0])
         .map(json)
 
-      @setData(data)
-
       @cells.filter((d) -> d of data)
         .attr("class", (d) -> "day q#{data[d].severity}-11" )
         .attr("data-date", (d) -> data[d].date )
         .select("title")
         .text((d) => "#{d}: #{@severity[data[d].severity]}")
+
+      @setData(json)
 
   getData: =>
     return @data
@@ -65,6 +65,8 @@ class HeatmapController
 
   setData: (data) =>
     @data = data
+    if @onLoad
+      @onLoad(data)
 
   monthPath: (t0) =>
     cellSize = @cellSize + @cellPad
@@ -80,10 +82,33 @@ class HeatmapController
     path += "H" + (w0 + 1) * cellSize + "Z"
     return path
 
+class RecentController
+  constructor: (@records) ->
+
+  loadDays: (days) ->
+    today = new Date()
+    since = new Date()
+    since.setDate(since.getDate() - days)
+    @loadDayRange(since, today)
+
+  loadDayRange: (from, to) ->
+    result = []
+    console.log(from, to)
+    for record in @records
+      date = new Date(record.date)
+      if date >= from && date <= from
+        result.push {'date': date, 'events': record.events}
+    return result
+
 $ ->
   heatmap = new HeatmapController
   heatmap.generate()
   heatmap.load()
+
+  heatmap.onLoad = (data) ->
+    console.log("data loaded")
+    recent = new RecentController(data)
+    recent.loadDays(0)
 
   $('.mtr .day').on 'click', (e) ->
     # deselect others
