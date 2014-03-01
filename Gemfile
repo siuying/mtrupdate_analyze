@@ -18,6 +18,10 @@ gem "pry"
 
 gem "rake"
 
+# Coffeescript
+gem "guard"
+gem "guard-coffeescript"
+
 group :test do
   gem "rspec"
 end
