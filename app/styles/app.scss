@@ -1,11 +1,25 @@
 body {
   font: 10px sans-serif;
   shape-rendering: crispEdges;
+  font-family: "Myriad Pro";
 }
 
-#heatmap {
+#container {
+  max-width: 782px;
   margin: 0 auto;
   text-align: center;
+
+  h1 {
+    text-align: left;
+    font-size: 24px;
+
+    .mtr {
+      color: #0F254C;
+    }
+    .delay {
+      color: #A62A42;
+    }
+  }
 }
 
 .mtr {
@@ -35,4 +49,12 @@ body {
   .q4-11{fill:rgb(255,33,1)}
   .q5-11{fill:rgb(131,33,1)}
   .q6-11{fill:rgb(0,0,0)}
+}
+
+#history {
+  text-align: left;
+
+  h2 {
+    font-size: 18px;
+  }
 }

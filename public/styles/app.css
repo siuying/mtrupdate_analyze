@@ -1,10 +1,19 @@
 body {
   font: 10px sans-serif;
-  shape-rendering: crispEdges; }
+  shape-rendering: crispEdges;
+  font-family: "Myriad Pro"; }
 
-#heatmap {
+#container {
+  max-width: 782px;
   margin: 0 auto;
   text-align: center; }
+  #container h1 {
+    text-align: left;
+    font-size: 24px; }
+    #container h1 .mtr {
+      color: #0F254C; }
+    #container h1 .delay {
+      color: #A62A42; }
 
 .mtr .day {
   fill: #fff; }
@@ -32,3 +41,8 @@ body {
   fill: #832101; }
 .mtr .q6-11 {
   fill: black; }
+
+#history {
+  text-align: left; }
+  #history h2 {
+    font-size: 18px; }
