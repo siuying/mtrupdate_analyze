@@ -1,0 +1,1 @@
+web: bundle exec heel -p $PORT -r public

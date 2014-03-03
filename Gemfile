@@ -18,10 +18,14 @@ gem "pry"
 
 gem "rake"
 
+# asset pipelines
 gem "coffee-script"
 gem "sass"
 gem "yui-compressor", :require => "yui/compressor"
 gem "sprockets"
+
+# static web server
+gem "heel"
 
 # Coffeescript & SCSS
 group :development do
