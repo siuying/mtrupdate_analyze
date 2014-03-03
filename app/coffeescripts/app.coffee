@@ -101,18 +101,20 @@ class RecentController
     return result
 
   generateRecent: (records) ->
-    html = ""
-    for record in records
-      html += "<ul class='delay'><span>#{record.date}</span>"
-      for event in record.events
-        html += "<li class='severity#{event.severity}'>#{event.time} #{event.text}</li>"
-      html += "</ul>"
+    if records.length > 0
+      template = "{{#records}}<ul class='delay'><span>{{date}}</span>"
+      template += "{{#events}}<li class='severity{{severity}}'>{{time}} {{text}}</li>{{/events}}"
+      template += "</ul>{{/records}}"
+      html = Mustache.render template, {records: records}
+    else
+      html = "<p>所選期間沒有延誤</p>"
     $("#recent").html(html)
 
 $ ->
   heatmap = new HeatmapController
   heatmap.generate()
   heatmap.load()
+  $('#date-picker').val('3')
 
   heatmap.onLoad = (data) ->
     recent = new RecentController(data)
@@ -137,6 +139,5 @@ $ ->
       # display selected date
       date = new Date(target.data('date'))
       recent.loadDayRange(date, date)
-
-      $('#selected-date').text(target.data('date')).show()
-      $('#date-picker').val('')
+      $('#date-picker').append('<option value="" id="selected-date"></option>') if $('#selected-date').length == 0
+      $('#selected-date').text(target.data('date'))
