@@ -46,4 +46,20 @@ namespace :data do
   end
 end
 
+task :build do 
+  env = Sprockets::Environment.new
+  env.append_path 'app/coffeescripts'
+  env.append_path 'app/styles'
+  env.append_path 'app/vendor'
+  env.js_compressor  = :yui
+  env.css_compressor  = :yui
+
+  js = env['app.coffee'].to_s
+  File.open("public/js/app.js", 'w+')  { |f| f << js }
+
+  css = env['app.scss'].to_s
+  File.open("public/styles/app.css", 'w+')  { |f| f << css }
+
+end
+
 task :default => [:'data:import', :'data:process']
