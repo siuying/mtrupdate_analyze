@@ -116,7 +116,10 @@ $ ->
 
   heatmap.onLoad = (data) ->
     recent = new RecentController(data)
-    recent.loadDays(7)
+    recent.loadDays(3)
+
+    $('#date-picker').on 'change', (e) ->
+      recent.loadDays($(e.currentTarget).val())
 
   $('.mtr .day').on 'click', (e) ->
     # deselect others

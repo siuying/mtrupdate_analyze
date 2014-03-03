@@ -175,7 +175,10 @@
     heatmap.onLoad = function(data) {
       var recent;
       recent = new RecentController(data);
-      return recent.loadDays(7);
+      recent.loadDays(3);
+      return $('#date-picker').on('change', function(e) {
+        return recent.loadDays($(e.currentTarget).val());
+      });
     };
     return $('.mtr .day').on('click', function(e) {
       var target;
