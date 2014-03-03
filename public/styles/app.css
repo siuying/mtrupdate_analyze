@@ -1,3 +1,6 @@
+html, body {
+  height: 100%; }
+
 body {
   font: 10px sans-serif;
   padding: 0px;
@@ -14,7 +17,9 @@ a {
 
 #container {
   max-width: 782px;
+  min-height: 100%;
   margin: 0 auto;
+  margin-bottom: 60px;
   text-align: center; }
   #container h1 {
     text-align: left;
@@ -54,7 +59,9 @@ a {
 #history {
   text-align: left;
   font-size: 18px;
-  margin-top: 40px; }
+  margin-top: 40px;
+  overflow: auto;
+  padding-bottom: 60px; }
   #history h2 {
     font-size: 20px; }
   #history #date-picker {
@@ -73,15 +80,17 @@ a {
     padding-right: 10px; }
 
 footer {
-  background-color: #eee;
   width: 100%;
+  color: #555;
+  position: relative;
+  margin-top: -60px;
   height: 60px;
-  margin-top: 100px;
-  color: #555; }
+  clear: both; }
   footer .container {
     text-align: center;
+    background-color: #eee;
     width: 100%;
     margin: 0 auto;
     padding-top: 20px;
-    height: 20px;
-    padding-bottom: 20px; }
+    padding-bottom: 20px;
+    height: 20px; }
