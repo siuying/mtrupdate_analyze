@@ -172,20 +172,31 @@
     heatmap = new HeatmapController;
     heatmap.generate();
     heatmap.load();
-    heatmap.onLoad = function(data) {
+    return heatmap.onLoad = function(data) {
       var recent;
       recent = new RecentController(data);
       recent.loadDays(3);
-      return $('#date-picker').on('change', function(e) {
-        return recent.loadDays($(e.currentTarget).val());
+      $('#date-picker').on('change', function(e) {
+        var date;
+        date = $(e.currentTarget).val();
+        if (date.id !== "selected-date") {
+          return recent.loadDays(date);
+        } else {
+          date = new Date($('#selected-date').text());
+          return recent.loadDayRange(date, date);
+        }
+      });
+      return $('.mtr .day').on('click', function(e) {
+        var date, target;
+        $('.selected').removeClass('selected');
+        target = $(e.currentTarget);
+        target.addClass('selected');
+        date = new Date(target.data('date'));
+        recent.loadDayRange(date, date);
+        $('#selected-date').text(target.data('date')).show();
+        return $('#date-picker').val('');
       });
     };
-    return $('.mtr .day').on('click', function(e) {
-      var target;
-      $('.selected').removeClass('selected');
-      target = $(e.currentTarget);
-      return target.addClass('selected');
-    });
   });
 
 }).call(this);

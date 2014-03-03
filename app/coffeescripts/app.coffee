@@ -119,12 +119,24 @@ $ ->
     recent.loadDays(3)
 
     $('#date-picker').on 'change', (e) ->
-      recent.loadDays($(e.currentTarget).val())
+      date = $(e.currentTarget).val()
+      if date.id != "selected-date"
+        recent.loadDays(date)
+      else
+        date = new Date($('#selected-date').text())
+        recent.loadDayRange(date, date)
 
-  $('.mtr .day').on 'click', (e) ->
-    # deselect others
-    $('.selected').removeClass('selected')
+    $('.mtr .day').on 'click', (e) ->
+      # deselect others
+      $('.selected').removeClass('selected')
 
-    # select current target
-    target = $(e.currentTarget)
-    target.addClass('selected')
+      # select current target
+      target = $(e.currentTarget)
+      target.addClass('selected')
+
+      # display selected date
+      date = new Date(target.data('date'))
+      recent.loadDayRange(date, date)
+
+      $('#selected-date').text(target.data('date')).show()
+      $('#date-picker').val('')
