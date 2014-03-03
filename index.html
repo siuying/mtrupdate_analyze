@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<link href="styles/app.css" media="all" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="//use.typekit.net/iyh8edl.js"></script>
+<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+<body>
+
+<div id="container">
+  <header>
+    <h1><span class="mtr">MTR</span><span class="delay">delay</span></h1>
+  </header>
+
+  <section id="heatmap">
+  </section>
+
+  <section id="history">
+    <select id="date-picker">
+      <option value="3">三天</option>
+      <option value="7" selected>七天</option>
+      <option value="30">三十天</option>
+    </select>
+    <h2>延誤記錄</h2>
+    <div id="recent"></div>
+  </section>
+</div>
+
+<footer>
+  <div class="container">
+    <span><a href="https://twitter.com/siuying">@siuying</a> 製作<br>
+    感謝 <a href="https://twitter.com/mtrupdate">@mtrupdate</a> 為我們提供港鐵消息</span>
+  </div>
+</footer>
+
+<script src="js/app.js"></script>
+</body>
