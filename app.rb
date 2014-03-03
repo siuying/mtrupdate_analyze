@@ -3,5 +3,5 @@ require 'bundler'
 Bundler.require
 
 get '/' do
-  send_file 'index.html'
+  send_file 'public/index.html'
 end
