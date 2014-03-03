@@ -1,1 +1,1 @@
-web: bundle exec thin -p 3000 -e production start
+web: bundle exec thin -p $PORT -e production start
