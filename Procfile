@@ -1,1 +1,1 @@
-web: bundle exec heel -p $PORT -r public --no-launch-browser 
+web: bundle exec heel -p $PORT -r public --no-launch-browser --no-highlighting  
