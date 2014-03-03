@@ -116,7 +116,13 @@
 
   RecentController = (function() {
     function RecentController(records) {
+      var record, _i, _len, _ref;
       this.records = records;
+      _ref = this.records;
+      for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+        record = _ref[_i];
+        record.date = new Date(record.date);
+      }
     }
 
     RecentController.prototype.loadDays = function(days) {
@@ -128,21 +134,33 @@
     };
 
     RecentController.prototype.loadDayRange = function(from, to) {
-      var date, record, result, _i, _len, _ref;
+      var record, result, _i, _len, _ref;
       result = [];
-      console.log(from, to);
       _ref = this.records;
       for (_i = 0, _len = _ref.length; _i < _len; _i++) {
         record = _ref[_i];
-        date = new Date(record.date);
-        if (date >= from && date <= from) {
-          result.push({
-            'date': date,
-            'events': record.events
-          });
+        if (record.date >= from && record.date <= to && record.events.length > 0) {
+          result.push(record);
         }
       }
+      this.generateRecent(result);
       return result;
+    };
+
+    RecentController.prototype.generateRecent = function(records) {
+      var event, html, record, _i, _j, _len, _len1, _ref;
+      html = "";
+      for (_i = 0, _len = records.length; _i < _len; _i++) {
+        record = records[_i];
+        html += "<ul class='delay'><span>" + record.date + "</span>";
+        _ref = record.events;
+        for (_j = 0, _len1 = _ref.length; _j < _len1; _j++) {
+          event = _ref[_j];
+          html += "<li class='severity" + event.severity + "'>" + event.time + " " + event.text + "</li>";
+        }
+        html += "</ul>";
+      }
+      return $("#recent").html(html);
     };
 
     return RecentController;
@@ -156,9 +174,8 @@
     heatmap.load();
     heatmap.onLoad = function(data) {
       var recent;
-      console.log("data loaded");
       recent = new RecentController(data);
-      return recent.loadDays(0);
+      return recent.loadDays(7);
     };
     return $('.mtr .day').on('click', function(e) {
       var target;

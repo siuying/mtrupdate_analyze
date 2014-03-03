@@ -83,7 +83,10 @@ class HeatmapController
     return path
 
 class RecentController
-  constructor: (@records) ->
+  constructor: (records) ->
+    @records = records 
+    for record in @records
+      record.date = new Date(record.date)
 
   loadDays: (days) ->
     today = new Date()
@@ -93,12 +96,18 @@ class RecentController
 
   loadDayRange: (from, to) ->
     result = []
-    console.log(from, to)
-    for record in @records
-      date = new Date(record.date)
-      if date >= from && date <= from
-        result.push {'date': date, 'events': record.events}
+    result.push(record) for record in @records when record.date >= from and record.date <= to and record.events.length > 0
+    @generateRecent(result)
     return result
+
+  generateRecent: (records) ->
+    html = ""
+    for record in records
+      html += "<ul class='delay'><span>#{record.date}</span>"
+      for event in record.events
+        html += "<li class='severity#{event.severity}'>#{event.time} #{event.text}</li>"
+      html += "</ul>"
+    $("#recent").html(html)
 
 $ ->
   heatmap = new HeatmapController
@@ -106,9 +115,8 @@ $ ->
   heatmap.load()
 
   heatmap.onLoad = (data) ->
-    console.log("data loaded")
     recent = new RecentController(data)
-    recent.loadDays(0)
+    recent.loadDays(7)
 
   $('.mtr .day').on 'click', (e) ->
     # deselect others
