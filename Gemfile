@@ -21,7 +21,7 @@ gem "yui-compressor", :require => "yui/compressor"
 gem "sprockets"
 
 # static web server
-gem "heel"
+gem 'rack'
 
 # Coffeescript & SCSS
 group :development do

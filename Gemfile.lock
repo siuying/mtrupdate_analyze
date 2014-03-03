@@ -31,11 +31,6 @@ GEM
     guard-rake (0.0.9)
       guard
       rake
-    heel (3.1.3)
-      coderay (~> 1.1)
-      launchy (~> 2.3)
-      mime-types (~> 1.25)
-      puma (~> 2.0)
     hike (1.2.3)
     http (0.5.0)
       http_parser.rb
@@ -45,8 +40,6 @@ GEM
       claide
       sequel
       sqlite3
-    launchy (2.4.2)
-      addressable (~> 2.3)
     listen (2.6.2)
       celluloid (>= 0.15.2)
       celluloid-io (>= 0.15.0)
@@ -56,7 +49,6 @@ GEM
     memoizable (0.4.0)
       thread_safe (~> 0.1.3)
     method_source (0.8.2)
-    mime-types (1.25.1)
     multi_json (1.8.4)
     multipart-post (2.0.0)
     naught (1.0.0)
@@ -65,8 +57,6 @@ GEM
       coderay (~> 1.0)
       method_source (~> 0.8)
       slop (~> 3.4)
-    puma (2.8.0)
-      rack (>= 1.1, < 2.0)
     rack (1.5.2)
     rake (10.1.1)
     rb-fsevent (0.9.4)
@@ -116,9 +106,9 @@ DEPENDENCIES
   coffee-script
   guard
   guard-rake
-  heel
   jsonsql (= 0.1.2)
   pry
+  rack
   rake
   rspec
   sass

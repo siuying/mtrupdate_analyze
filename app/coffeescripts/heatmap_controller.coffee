@@ -1,5 +1,5 @@
 class HeatmapController
-  constructor: () ->
+  constructor: (@dataUrl="heatmap.json") ->
     @cellPad = 2
     @cellSize = 12
     @width = (@cellSize + @cellPad) * 53 + 40
@@ -41,8 +41,8 @@ class HeatmapController
     @svg.selectAll(".month").data((d) -> d3.time.months(new Date(d, 0, 1), new Date(d + 1, 0, 1)) )
       .enter().append("path").attr("class", "month").attr("d", @monthPath)
 
-  load: (filename="heatmap.json") =>
-    d3.json filename, (error, json) =>
+  load: =>
+    d3.json @dataUrl, (error, json) =>
       data = d3.nest()
         .key((d) -> d.date)
         .rollup((d) -> d[0])

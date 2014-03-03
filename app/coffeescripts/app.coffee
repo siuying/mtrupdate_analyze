@@ -6,7 +6,8 @@
 #= require_tree .
 
 $ ->
-  heatmap = new HeatmapController
+  url = 'heatmap.json'
+  heatmap = new HeatmapController(url)
   heatmap.generate()
   heatmap.load()
   $('#date-picker').val('7')
