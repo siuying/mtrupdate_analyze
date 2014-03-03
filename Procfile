@@ -1,1 +1,1 @@
-web: bundle exec heel -p $PORT -r public --no-launch-browser --no-highlighting  
+web: bundle exec rackup -p 3000

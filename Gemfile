@@ -22,6 +22,7 @@ gem "sprockets"
 
 # static web server
 gem 'rack'
+gem 'thin'
 
 # Coffeescript & SCSS
 group :development do
