@@ -86,7 +86,7 @@ class RecentController
   constructor: (records) ->
     @records = records 
     formatDate = () ->
-      "#{@date.getFullYear()}年 #{@date.getMonth()+1}月 #{@date.getDay()}日"
+      "#{@date.getFullYear()}年 #{@date.getMonth()+1}月 #{@date.getDate()+1}日"
 
     for record in @records
       record.date = new Date(record.date)
@@ -101,6 +101,7 @@ class RecentController
   loadDayRange: (from, to) ->
     result = []
     result.push(record) for record in @records when record.date >= from and record.date <= to and record.events.length > 0
+    result.sort (r1, r2) -> r1.date <= r2.date
     @generateRecent(result)
     return result
 
@@ -118,11 +119,11 @@ $ ->
   heatmap = new HeatmapController
   heatmap.generate()
   heatmap.load()
-  $('#date-picker').val('3')
+  $('#date-picker').val('7')
 
   heatmap.onLoad = (data) ->
     recent = new RecentController(data)
-    recent.loadDays(3)
+    recent.loadDays(7)
 
     $('#date-picker').on 'change', (e) ->
       date = $(e.currentTarget).val()

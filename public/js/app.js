@@ -119,7 +119,7 @@
       var formatDate, record, _i, _len, _ref;
       this.records = records;
       formatDate = function() {
-        return "" + (this.date.getFullYear()) + "年 " + (this.date.getMonth() + 1) + "月 " + (this.date.getDay()) + "日";
+        return "" + (this.date.getFullYear()) + "年 " + (this.date.getMonth() + 1) + "月 " + (this.date.getDate() + 1) + "日";
       };
       _ref = this.records;
       for (_i = 0, _len = _ref.length; _i < _len; _i++) {
@@ -147,6 +147,9 @@
           result.push(record);
         }
       }
+      result.sort(function(r1, r2) {
+        return r1.date <= r2.date;
+      });
       this.generateRecent(result);
       return result;
     };
@@ -175,11 +178,11 @@
     heatmap = new HeatmapController;
     heatmap.generate();
     heatmap.load();
-    $('#date-picker').val('3');
+    $('#date-picker').val('7');
     return heatmap.onLoad = function(data) {
       var recent;
       recent = new RecentController(data);
-      recent.loadDays(3);
+      recent.loadDays(7);
       $('#date-picker').on('change', function(e) {
         var date;
         date = $(e.currentTarget).val();
