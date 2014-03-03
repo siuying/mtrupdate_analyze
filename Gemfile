@@ -20,8 +20,7 @@ gem "sass"
 gem "yui-compressor", :require => "yui/compressor"
 gem "sprockets"
 
-# static web server
-gem 'rack'
+gem 'sinatra'
 gem 'thin'
 
 # Coffeescript & SCSS
