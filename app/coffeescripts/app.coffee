@@ -85,8 +85,12 @@ class HeatmapController
 class RecentController
   constructor: (records) ->
     @records = records 
+    formatDate = () ->
+      "#{@date.getFullYear()}年 #{@date.getMonth()+1}月 #{@date.getDay()}日"
+
     for record in @records
       record.date = new Date(record.date)
+      record.formattedDate = formatDate
 
   loadDays: (days) ->
     today = new Date()
@@ -102,9 +106,9 @@ class RecentController
 
   generateRecent: (records) ->
     if records.length > 0
-      template = "{{#records}}<ul class='delay'><span>{{date}}</span>"
-      template += "{{#events}}<li class='severity{{severity}}'>{{time}} {{text}}</li>{{/events}}"
-      template += "</ul>{{/records}}"
+      template = "{{#records}}<h4>{{formattedDate}}</h4><table class='delay'>"
+      template += "{{#events}}<tr class='severity{{severity}}'><td class='time' valign='top'>{{time}}</td> <td class='text' valign='top'>{{text}}</td></tr>{{/events}}"
+      template += "</table>{{/records}}"
       html = Mustache.render template, {records: records}
     else
       html = "<p>所選期間沒有延誤</p>"

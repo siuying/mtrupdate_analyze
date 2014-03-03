@@ -116,12 +116,16 @@
 
   RecentController = (function() {
     function RecentController(records) {
-      var record, _i, _len, _ref;
+      var formatDate, record, _i, _len, _ref;
       this.records = records;
+      formatDate = function() {
+        return "" + (this.date.getFullYear()) + "年 " + (this.date.getMonth() + 1) + "月 " + (this.date.getDay()) + "日";
+      };
       _ref = this.records;
       for (_i = 0, _len = _ref.length; _i < _len; _i++) {
         record = _ref[_i];
         record.date = new Date(record.date);
+        record.formattedDate = formatDate;
       }
     }
 
@@ -150,9 +154,9 @@
     RecentController.prototype.generateRecent = function(records) {
       var html, template;
       if (records.length > 0) {
-        template = "{{#records}}<ul class='delay'><span>{{date}}</span>";
-        template += "{{#events}}<li class='severity{{severity}}'>{{time}} {{text}}</li>{{/events}}";
-        template += "</ul>{{/records}}";
+        template = "{{#records}}<h4>{{formattedDate}}</h4><table class='delay'>";
+        template += "{{#events}}<tr class='severity{{severity}}'><td class='time' valign='top'>{{time}}</td> <td class='text' valign='top'>{{text}}</td></tr>{{/events}}";
+        template += "</table>{{/records}}";
         html = Mustache.render(template, {
           records: records
         });

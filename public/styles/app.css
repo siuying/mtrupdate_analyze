@@ -43,10 +43,22 @@ body {
   fill: black; }
 
 #history {
-  text-align: left; }
+  text-align: left;
+  font-size: 18px;
+  margin-top: 40px; }
   #history h2 {
     font-size: 20px; }
-
-#date-picker {
-  width: 140px;
-  float: right; }
+  #history #date-picker {
+    width: 140px;
+    float: right;
+    font-size: 14px; }
+  #history #recent ul, #history #recent li {
+    list-style: none;
+    margin: 0; }
+  #history #recent ul {
+    padding: 0 0 20px 0;
+    margin: 0; }
+  #history #recent td.time {
+    color: #aaa;
+    font-size: 14px;
+    padding-right: 10px; }
