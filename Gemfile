@@ -6,10 +6,6 @@ gem "twitter"
 # Config file loading
 gem "settingslogic"
 
-gem "sequel"
-gem "sqlite3"
-gem "jsonsql", '0.1.2'
-
 # Language Detection
 # gem "cld"
 
@@ -29,6 +25,9 @@ gem "heel"
 
 # Coffeescript & SCSS
 group :development do
+  gem "sequel"
+  gem "sqlite3"
+  gem "jsonsql", '0.1.2'
   gem "guard", :require => false
   gem "guard-rake", :require => false
 end
