@@ -1,7 +1,21 @@
 body {
   font: 10px sans-serif;
+  padding: 0px;
+  margin: 0px;
   shape-rendering: crispEdges;
   font-family: "Myriad Pro";
+}
+
+$linkColor: #A8173F;
+a {
+  color: $linkColor;
+
+  &:visited {
+    color: darken($linkColor, 10%);
+  }
+  &:hover {
+    color: lighter($linkColor, 10%);
+  }
 }
 
 #container {
@@ -87,5 +101,22 @@ body {
     .text {
 
     }
+  }
+}
+
+footer {
+  background-color: #eee;
+  width: 100%;
+  height: 60px;
+  margin-top: 100px;
+  color: #555;
+
+  .container {
+    text-align: center;
+    width: 100%;
+    margin: 0 auto;
+    padding-top: 20px;
+    height: 20px;
+    padding-bottom: 20px;
   }
 }
