@@ -12,7 +12,7 @@ Load all @mtrupdate tweets and extract data from it.
 
 ## Usage
 
-WIP.
+Check http://mtrdelay.reality.hk/
 
 ## API
 
