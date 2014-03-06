@@ -38,7 +38,7 @@ GEM
       http_parser.rb
     http_parser.rb (0.6.0)
     json (1.8.1)
-    jsonsql (0.2.0)
+    jsonsql (0.2.1)
       claide
       sequel
       sqlite3
@@ -118,7 +118,7 @@ DEPENDENCIES
   coffee-script
   guard
   guard-rake
-  jsonsql (= 0.2.0)
+  jsonsql (= 0.2.1)
   pry
   rake
   rspec

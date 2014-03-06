@@ -23,7 +23,7 @@ gem "sprockets"
 # database
 gem "sequel"
 gem "sqlite3"
-gem "jsonsql", '0.2.0'
+gem "jsonsql", '0.2.1'
 
 gem 'sinatra'
 gem 'thin'
