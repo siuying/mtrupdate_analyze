@@ -20,10 +20,12 @@ gem "sass"
 gem "yui-compressor", :require => "yui/compressor"
 gem "sprockets"
 
-# database
-gem "sequel"
-gem "sqlite3"
-gem "jsonsql", '0.2.1'
+group :development do
+  # database
+  gem "sequel"
+  gem "sqlite3"
+  gem "jsonsql", '0.2.1'
+end
 
 gem 'sinatra'
 gem 'thin'

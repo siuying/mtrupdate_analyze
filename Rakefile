@@ -1,6 +1,6 @@
 require 'rubygems'
 require 'bundler'
-Bundler.require
+Bundler.require :default, :development
 require 'fileutils'
 
 require_relative './config/settings'
