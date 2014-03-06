@@ -27,7 +27,7 @@ gem 'thin'
 group :development do
   gem "sequel"
   gem "sqlite3"
-  gem "jsonsql", '0.1.2'
+  gem "jsonsql", '0.2.0'
   gem "guard", :require => false
   gem "guard-rake", :require => false
 end

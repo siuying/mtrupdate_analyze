@@ -1,3 +1,4 @@
 config/application.yml
 db/*.db
 .sass-cache/
+.bundle
