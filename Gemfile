@@ -20,14 +20,16 @@ gem "sass"
 gem "yui-compressor", :require => "yui/compressor"
 gem "sprockets"
 
+# database
+gem "sequel"
+gem "sqlite3"
+gem "jsonsql", '0.2.0'
+
 gem 'sinatra'
 gem 'thin'
 
 # Coffeescript & SCSS
 group :development do
-  gem "sequel"
-  gem "sqlite3"
-  gem "jsonsql", '0.2.0'
   gem "guard", :require => false
   gem "guard-rake", :require => false
 end
