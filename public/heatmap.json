@@ -6472,6 +6472,22 @@
   },
   {
     "date": "2014-03-06",
+    "severity": 2,
+    "events": [
+      {
+        "time": "1925",
+        "text": "荃灣綫荔枝角站發生火警，服務稍有阻延 http://t.co/sU6hSOD1cY",
+        "severity": 2
+      },
+      {
+        "time": "2000",
+        "text": "荃灣綫列車服務回復正常",
+        "severity": 0
+      }
+    ]
+  },
+  {
+    "date": "2014-03-07",
     "severity": 0,
     "events": [
 
