@@ -2,7 +2,7 @@ class RecentController
   constructor: (records) ->
     @records = records 
     formatDate = () ->
-      "#{@date.getFullYear()}年 #{@date.getMonth()+1}月 #{@date.getDate()+1}日"
+      "#{@date.getFullYear()}年 #{@date.getMonth()+1}月 #{@date.getDate()}日"
 
     for record in @records
       record.date = new Date(record.date)
