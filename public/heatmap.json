@@ -6492,5 +6492,100 @@
     "events": [
 
     ]
+  },
+  {
+    "date": "2014-03-08",
+    "severity": 2,
+    "events": [
+      {
+        "time": "1645",
+        "text": "觀塘綫油塘站路軌出現問題，服務稍有阻延",
+        "severity": 2
+      },
+      {
+        "time": "1936",
+        "text": "觀塘綫列車服務回復正常",
+        "severity": 0
+      }
+    ]
+  },
+  {
+    "date": "2014-03-09",
+    "severity": 0,
+    "events": [
+
+    ]
+  },
+  {
+    "date": "2014-03-10",
+    "severity": 0,
+    "events": [
+
+    ]
+  },
+  {
+    "date": "2014-03-11",
+    "severity": 0,
+    "events": [
+
+    ]
+  },
+  {
+    "date": "2014-03-12",
+    "severity": 0,
+    "events": [
+
+    ]
+  },
+  {
+    "date": "2014-03-13",
+    "severity": 0,
+    "events": [
+
+    ]
+  },
+  {
+    "date": "2014-03-14",
+    "severity": 2,
+    "events": [
+      {
+        "time": "0835",
+        "text": "西鐵綫天水圍站月台幕門故障，服務稍有阻延",
+        "severity": 2
+      },
+      {
+        "time": "0915",
+        "text": "西鐵綫列車服務回復正常",
+        "severity": 0
+      },
+      {
+        "time": "2250",
+        "text": "輕鐵服務回復正常",
+        "severity": 0
+      }
+    ]
+  },
+  {
+    "date": "2014-03-15",
+    "severity": 2,
+    "events": [
+      {
+        "time": "1545",
+        "text": "東鐵綫九龍塘站信號故障，服務稍有阻延",
+        "severity": 2
+      },
+      {
+        "time": "1640",
+        "text": "東鐵綫列車服務回復正常",
+        "severity": 0
+      }
+    ]
+  },
+  {
+    "date": "2014-03-16",
+    "severity": 0,
+    "events": [
+
+    ]
   }
 ]
