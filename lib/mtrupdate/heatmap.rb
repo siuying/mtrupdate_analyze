@@ -3,7 +3,7 @@ require 'date'
 module Mtrupdate
   class Heatmap
     DELAY_SEVERITY = {
-      "服務受阻" => 1, "稍有阻延" => 2, "顯著受阻" => 3, "嚴重受阻" => 4, "限度服務" => 5, "全綫暫停" => 6, "回復正常" => 0
+      "服務受阻" => 1, "稍有阻延" => 2, "顯著受阻" => 3, "嚴重受阻" => 4, "限度服務" => 5, "暫停服務" => 5, "全綫暫停" => 6, "回復正常" => 0
     }
 
     attr_reader :groups, :export_path, :output
